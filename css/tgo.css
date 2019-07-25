@@ -1,0 +1,21 @@
+/* main css */
+header, section, footer, aside, nav, main, article, figure {
+    display: block; 
+}
+
+html
+{
+	font-family:"Comic Sans MS", cursive, sans-serif;
+	font-size:150%
+}
+
+body
+{
+	background-color:#FFFFFF;
+}
+
+.header
+{
+	text-align:center;
+	te
+}
