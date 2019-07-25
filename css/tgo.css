@@ -19,3 +19,14 @@ body
 {
 	text-align:center;
 }
+
+ul.header
+{
+	list-style:none;
+}
+
+li.header
+{
+	float:left;
+	width:100px;
+}
