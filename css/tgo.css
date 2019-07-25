@@ -20,12 +20,12 @@ body
 	text-align:center;
 }
 
-.header ul
+header.header ul
 {
 	list-style:none;
 }
 
-.header li
+header.header li
 {
 	float:left;
 	width:100px;
