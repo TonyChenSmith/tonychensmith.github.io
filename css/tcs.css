@@ -1,0 +1,16 @@
+/* main css */
+header, section, footer, aside, nav, main, article, figure
+{
+    display: block; 
+}
+
+*
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:100%
+}
+
+body
+{
+	background-color:#FF0FFF;
+}
