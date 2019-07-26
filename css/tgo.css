@@ -12,7 +12,7 @@ header, section, footer, aside, nav, main, article, figure
 
 body
 {
-	background-color:#FFFFFF;
+	background-color:#FF0FFF;
 }
 
 .header
@@ -20,13 +20,29 @@ body
 	text-align:center;
 }
 
-header.header ul
+.header ul
 {
 	list-style:none;
+	color:#141A83;
 }
 
-header.header li
+.header li
 {
 	float:left;
 	width:100px;
+	margin:0;
+}
+
+.header a
+{
+	margin:0;
+	background-color:#141A83;
+	color:#FFFFFF;
+}
+
+.header a:hover
+{
+	margin:0;
+	color:#141A83;
+	background-color:#FFFFFF;
 }
