@@ -6,21 +6,11 @@ header, section, footer, aside, nav, main, article, figure
 
 *
 {
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:'微软雅黑', '黑体', 'sans-serif';
 	font-size:100%
 }
 
 body
 {
 	background-color:#FF0FFF;
-}
-
-#index_header a
-{
-	color:#F5F5F5;
-}
-
-.navbar
-{
-	background-color:#0292ED;
 }
