@@ -12,15 +12,32 @@ header, section, footer, aside, nav, main, article, figure
 
 body
 {
-	background-color:#FF0FFF;
+	background-color:#151515;
 }
 
 #index_header a
 {
-	color:#F5F5F5;
+	color:#6CC5FD;
 }
 
 .navbar
 {
-	background-color:#0292ED;
+	background-color:#003659;
+	border:none;
+}
+
+.navbar-toggle
+{
+	background-color:#016AAD!important;
+	border-color: #6CC5FD !important;
+}
+
+.navbar-toggle:hover
+{
+	background-color:#32AEFD !important;
+}
+
+.icon-bar
+{
+	background-color:#CECECE !important;
 }

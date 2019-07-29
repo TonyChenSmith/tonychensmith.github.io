@@ -14,6 +14,75 @@
 			<script src="js/html5shiv.min.js"></script>
 		<![endif]-->
 		<link rel="stylesheet" href="css/tcs.css" type="text/css"/>
+		<script>
+			$(function() {
+				
+				//获得参数
+				function GetQueryString(name)
+				{
+     				var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     				var r = window.location.search.substr(1).match(reg);
+     				if(r!=null)return unescape(r[2]); return null;
+				}
+				
+				function TurnLightTheme()
+				{
+					$("body").css("background-color","#F1F1F1");
+					$("#index_header a").css("color","#F5F5F5");
+					$(".navbar").css({"background-color":"#0292ED","border":"none"});
+					$(".navbar-toggle").css({"background-color":"#32AEFD !important","border-color":"#F5F5F5 !important"});
+					$(".navbar-toggle:hover").css("background-color","#016AAD !important");
+					$(".icon-bar").css("background-color","#B2B2B2 !important");
+				}
+				
+				function TurnDarkTheme()
+				{
+					$("body").css("background-color","#151515");
+					$("#index_header a").css("color","#6CC5FD");
+					$(".navbar").css({"background-color":"#003659","border":"none"});
+					$(".navbar-toggle").css({"background-color":"#016AAD !important","border-color":"#6CC5FD !important"});
+					$(".navbar-toggle:hover").css("background-color","#32AEFD !important");
+					$(".icon-bar").css("background-color","#CECECE !important");
+				}
+				
+				$('#turn_theme').click(function() {
+					if($(this).text()=="Light")
+					{
+						TurnDarkTheme();
+						$(this).text("Dark");
+					}
+					else
+					{
+						TurnLightTheme();
+						$(this).text("Light");
+					}
+				});
+				
+				var themeType=GetQueryString("theme");
+				if(themeType == null || themeType == "light")
+				{	
+					TurnLightTheme();
+					$('#turn_theme').text("Light");
+					
+					var tempUrl=$('turn_lang').attr("href");
+					$('turn_lang').attr("href",tempUrl.concat("?theme=light"));
+					
+					tempUrl=$('turn_home').attr("href");
+					$('turn_home').attr("href",tempUrl.concat("?theme=light"));
+				}
+				else
+				{
+					TurnDarkTheme();
+					$('#turn_theme').text("Dark");
+					
+					var tempUrl=$('turn_lang').attr("href");
+					$('turn_lang').attr("href",tempUrl.concat("?theme=dark"));
+					
+					tempUrl=$('turn_home').attr("href");
+					$('turn_home').attr("href",tempUrl.concat("?theme=dark"));
+				}
+			});
+		</script>
 		<title>Welcome</title>
 	</head>
 	<body>
@@ -26,13 +95,13 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="index.html" class="navbar-brand" id="turn-background">Light</a>
-					<a href="zh_CN/main.html" class="navbar-brand">English</a>
+					<a href="#" class="navbar-brand" id="turn_theme">Light</a>
+					<a href="zh_CN/main.html" class="navbar-brand" id="turn_lang">English</a>
 				</div>
-				<div class="collapse navbar-collapse" id="tcs_bar">
+				<div class="collapse navbar-collapse navbar-right" id="tcs_bar">
 					<ul class="nav navbar-nav">
 						<li>
-							<a href="index.html">Home</a>
+							<a href="index.html" id="turn_home">Home</a>
 						</li>
 					</ul>
 				</div>
