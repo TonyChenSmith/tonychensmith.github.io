@@ -7,7 +7,6 @@
 		<meta name="description" content="Tony Chen Smith Personal Website"/>
 		<meta name="author" content="Tony Chen Smith"/>
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
-		<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
 		<script src="../js/jquery-3.4.1.min.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
 		<!--[if lt IE 9]>
@@ -15,7 +14,82 @@
 			<script src="js/html5shiv.min.js"></script>
 		<![endif]-->
 		<link rel="stylesheet" href="css/tcs.css" type="text/css"/>
-		<title>欢迎</title>
+		<script>
+			$(function() {
+				
+				//获得参数
+				function GetQueryString(name)
+				{
+     				var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     				var r = window.location.search.substr(1).match(reg);
+     				if(r!=null)return unescape(r[2]); return null;
+				}
+				
+				function TurnLightTheme()
+				{
+					$("body").css("background-color","#F1F1F1");
+					$("#index_header a").css("color","#F5F5F5");
+					$(".navbar").css({"background-color":"#0292ED","border":"none"});
+					$(".navbar-toggle").css({"background-color":"#32AEFD !important","border-color":"#F5F5F5 !important"});
+					$(".navbar-toggle:hover").css("background-color","#016AAD !important");
+					$(".icon-bar").css("background-color","#B2B2B2 !important");
+				}
+				
+				function TurnDarkTheme()
+				{
+					$("body").css("background-color","#151515");
+					$("#index_header a").css("color","#6CC5FD");
+					$(".navbar").css({"background-color":"#003659","border":"none"});
+					$(".navbar-toggle").css({"background-color":"#016AAD !important","border-color":"#6CC5FD !important"});
+					$(".navbar-toggle:hover").css("background-color","#32AEFD !important");
+					$(".icon-bar").css("background-color","#CECECE !important");
+				}
+				
+				$("#turn_theme").click(function(){
+					if($(this).text=="亮色")
+					{
+						TurnDarkTheme();
+						$(this).text("暗色");	
+					}
+					else
+					{
+						TurnLightTheme();
+						$(this).text("亮色");
+					}
+				});
+				
+				var themeType=GetQueryString("theme");
+				if(themeType == null || themeType == "light")
+				{	
+					TurnLightTheme();
+					$('#turn_theme').text("亮色");
+					
+					var tempUrl=$('#turn_lang').attr("href");
+					$('#turn_lang').attr("href",tempUrl.concat("?theme=light"));
+					
+					tempUrl=$('#turn_home').attr("href");
+					$('#turn_home').attr("href",tempUrl.concat("?theme=light"));
+					
+					tempUrl=$('#turn_theme').attr("href");
+					$('#turn_theme').attr("href",tempUrl.concat("?theme=dark"));
+				}
+				else
+				{
+					TurnDarkTheme();
+					$('#turn_theme').text("暗色");
+					
+					var tempUrl=$('#turn_lang').attr("href");
+					$('#turn_lang').attr("href",tempUrl.concat("?theme=dark"));
+					
+					tempUrl=$('turn_home').attr("href");
+					$('#turn_home').attr("href",tempUrl.concat("?theme=dark"));
+					
+					tempUrl=$('#turn_theme').attr("href");
+					$('#turn_theme').attr("href",tempUrl.concat("?theme=light"));
+				}
+			});
+		</script>
+		<title>主页</title>
 	</head>
 	<body>
 		<header class="navbar navbar-default nav-fixed-top" role="navigation">
@@ -30,10 +104,10 @@
 					<a href="main.html" class="navbar-brand" id="turn-background">亮色</a>
 					<a href="../index.html" class="navbar-brand">中文</a>
 				</div>
-				<div class="collapse navbar-collapse" id="tcs_bar">
+				<div class="collapse navbar-collapse navbar-right" id="tcs_bar">
 					<ul class="nav navbar-nav">
 						<li>
-							<a href="index.html">主页</a>
+							<a href="main.html">主页</a>
 						</li>
 					</ul>
 				</div>

@@ -45,11 +45,11 @@
 					$(".icon-bar").css("background-color","#CECECE !important");
 				}
 				
-				$('#turn_theme').click(function() {
-					if($(this).text()=="Light")
+				$("#turn_theme").click(function(){
+					if($(this).text=="Light")
 					{
 						TurnDarkTheme();
-						$(this).text("Dark");
+						$(this).text("Dark");	
 					}
 					else
 					{
@@ -64,26 +64,32 @@
 					TurnLightTheme();
 					$('#turn_theme').text("Light");
 					
-					var tempUrl=$('turn_lang').attr("href");
-					$('turn_lang').attr("href",tempUrl.concat("?theme=light"));
+					var tempUrl=$('#turn_lang').attr("href");
+					$('#turn_lang').attr("href",tempUrl.concat("?theme=light"));
 					
-					tempUrl=$('turn_home').attr("href");
-					$('turn_home').attr("href",tempUrl.concat("?theme=light"));
+					tempUrl=$('#turn_home').attr("href");
+					$('#turn_home').attr("href",tempUrl.concat("?theme=light"));
+					
+					tempUrl=$('#turn_theme').attr("href");
+					$('#turn_theme').attr("href",tempUrl.concat("?theme=dark"));
 				}
 				else
 				{
 					TurnDarkTheme();
 					$('#turn_theme').text("Dark");
 					
-					var tempUrl=$('turn_lang').attr("href");
-					$('turn_lang').attr("href",tempUrl.concat("?theme=dark"));
+					var tempUrl=$('#turn_lang').attr("href");
+					$('#turn_lang').attr("href",tempUrl.concat("?theme=dark"));
 					
 					tempUrl=$('turn_home').attr("href");
-					$('turn_home').attr("href",tempUrl.concat("?theme=dark"));
+					$('#turn_home').attr("href",tempUrl.concat("?theme=dark"));
+					
+					tempUrl=$('#turn_theme').attr("href");
+					$('#turn_theme').attr("href",tempUrl.concat("?theme=light"));
 				}
 			});
 		</script>
-		<title>Welcome</title>
+		<title>Home</title>
 	</head>
 	<body>
 		<header class="navbar navbar-default nav-fixed-top" role="navigation" id="index_header">
