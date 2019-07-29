@@ -49,12 +49,16 @@
 					if($(this).text()=="Light")
 					{
 						TurnDarkTheme();
-						$(this).text("Dark");	
+						$(this).text("Dark");
+						$('#turn_lang').attr("href","zh_CN/main.html?theme=dark"));
+						$('#turn_home').attr("href","index.html?theme=dark"));
 					}
 					else
 					{
 						TurnLightTheme();
 						$(this).text("Light");
+						$('#turn_lang').attr("href","zh_CN/main.html?theme=light");
+						$('#turn_home').attr("href","index.html?theme=light"));
 					}
 				});
 				
@@ -63,23 +67,15 @@
 				{	
 					TurnLightTheme();
 					$('#turn_theme').text("Light");
-					
-					var tempUrl=$('#turn_lang').attr("href");
-					$('#turn_lang').attr("href",tempUrl.concat("?theme=light"));
-					
-					tempUrl=$('#turn_home').attr("href");
-					$('#turn_home').attr("href",tempUrl.concat("?theme=light"));
+					$('#turn_lang').attr("href","zh_CN/main.html?theme=light");
+					$('#turn_home').attr("href","index.html?theme=light"));
 				}
 				else
 				{
 					TurnDarkTheme();
 					$('#turn_theme').text("Dark");
-					
-					var tempUrl=$('#turn_lang').attr("href");
-					$('#turn_lang').attr("href",tempUrl.concat("?theme=dark"));
-					
-					tempUrl=$('turn_home').attr("href");
-					$('#turn_home').attr("href",tempUrl.concat("?theme=dark"));
+					$('#turn_lang').attr("href","zh_CN/main.html?theme=dark"));
+					$('#turn_home').attr("href","index.html?theme=dark"));
 				}
 			});
 		</script>
