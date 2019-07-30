@@ -9,3 +9,18 @@ header, section, footer, aside, nav, main, article, figure
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:100%
 }
+
+article
+{
+	background-color: #030;
+}
+
+@media (min-width:480px)
+{
+	article
+	{
+		margin-left:30px;
+		margin-right:30px;
+		margin-top:10px;
+	}
+}
