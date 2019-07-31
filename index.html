@@ -17,21 +17,20 @@
 		<script src="js/tcs.js"></script>
 		<script>
 			$(function() {
-				
-				$("#turn_theme").click(function(){
+				$("#tcs_turn_theme").click(function(){
 					if($(this).text()=="Light")
 					{
 						TurnDarkTheme();
 						$(this).text("Dark");
-						$('#turn_lang').attr("href","zh_CN/main.html?theme=dark");
-						$('#turn_home').attr("href","index.html?theme=dark");
+						$("#tcs_turn_lang").attr("href","zh_CN/main.html?theme=dark&page=tcs_main");
+						$("#tcs_turn_home").attr("href","index.html?theme=dark&page=tcs_main");
 					}
 					else
 					{
 						TurnLightTheme();
 						$(this).text("Light");
-						$('#turn_lang').attr("href","zh_CN/main.html?theme=light");
-						$('#turn_home').attr("href","index.html?theme=light");
+						$("#tcs_turn_lang").attr("href","zh_CN/main.html?theme=light&page=tcs_main");
+						$("#tcs_turn_home").attr("href","index.html?theme=light&page=tcs_main");
 					}
 				});
 				
@@ -39,17 +38,28 @@
 				if(themeType == null || themeType == "light")
 				{	
 					TurnLightTheme();
-					$('#turn_theme').text("Light");
-					$('#turn_lang').attr("href","zh_CN/main.html?theme=light");
-					$('#turn_home').attr("href","index.html?theme=light");
+					$("#tcs_turn_theme").text("Light");
+					$("#tcs_turn_lang").attr("href","zh_CN/main.html?theme=light&page=tcs_main");
+					$("#tcs_turn_home").attr("href","index.html?theme=light&page=tcs_main");
 				}
 				else
 				{
 					TurnDarkTheme();
-					$('#turn_theme').text("Dark");
-					$('#turn_lang').attr("href","zh_CN/main.html?theme=dark");
-					$('#turn_home').attr("href","index.html?theme=dark");
+					$("#tcs_turn_theme").text("Dark");
+					$("#tcs_turn_lang").attr("href","zh_CN/main.html?theme=dark&page=tcs_main");
+					$("#tcs_turn_home").attr("href","index.html?theme=dark&page=tcs_main");
 				}
+				
+				var pageName=GetQueryString("page");
+				if(pageName == null||pageName == undefined)
+				{
+					LoadPage("#tcs_content","tcs_main");
+				}
+				else
+				{
+					LoadPage("#tcs_content",pageName);
+				}
+				
 			});
 		</script>
 		<title>Home</title>
@@ -64,21 +74,20 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="#" class="navbar-brand" id="turn_theme">Light</a>
-					<a href="zh_CN/main.html" class="navbar-brand" id="turn_lang">English</a>
+					<a href="#" class="navbar-brand" id="tcs_turn_theme">Light</a>
+					<a href="" class="navbar-brand" id="tcs_turn_lang">English</a>
 				</div>
 				<div class="collapse navbar-collapse navbar-right" id="tcs_bar">
 					<ul class="nav navbar-nav">
-						<li>
-							<a href="index.html" id="turn_home">Home</a>
+						<li class="tcs_active">
+							<a href="" id="tcs_turn_home">Home</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</header>
 		
-		<!--<article id="content">
-			<p>lalala</p>
-		</article>-->
+		<div id="tcs_content">
+		</div>
 	</body>
 </html>

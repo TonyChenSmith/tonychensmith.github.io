@@ -6,6 +6,13 @@ function GetQueryString(name)
 	if(r!=null)return unescape(r[2]); return null;
 }
 
+//获得页面
+function LoadPage(bodyName,name)
+{
+	$(bodyName).empty();
+	$(bodyName).load(name.concat(".html"));
+}
+
 //亮色主题
 function TurnLightTheme()
 {
