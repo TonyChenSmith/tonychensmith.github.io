@@ -7,10 +7,16 @@ function GetQueryString(name)
 }
 
 //获得页面
-function LoadPage(bodyName,name)
+function LoadPage(bodyName,name,cssFunction,themeType)
 {
 	$(bodyName).empty();
-	$(bodyName).load(name.concat(".html"));
+	$(bodyName).load(name.concat(".html"),function(){
+		if(cssFunction != undefined)
+		{
+			cssFunction(themeType);
+		}
+	});
+	$(bodyName).attr("page",name);
 }
 
 //亮色主题
@@ -37,4 +43,27 @@ function TurnDarkTheme()
 	$(".navbar-toggle").mouseup(function(){$(this).css("cssText","background-color:#016AAD !important");});
 	$(".navbar-toggle").hover(function(){$(this).css("cssText","background-color:#32AEFD !important");},function(){$(this).css("cssText","background-color:#016AAD !important");});
 	$(".icon-bar").css("cssText","background-color:#CECECE !important");
+}
+
+function FindCSSFunction(pageName)
+{
+	if(pageName == "tcs_main")
+	{
+		return TCSMainTheme;
+	}
+	
+	return undefined;
+}
+
+//Main样式
+function TCSMainTheme(themeType)
+{
+	if(themeType == "light")
+	{
+		$("#tcs_main_gen").css("cssText","color:#000000");
+	}
+	else
+	{
+		$("#tcs_main_gen").css("cssText","color:#FFFFFF");
+	}
 }

@@ -24,6 +24,7 @@
 						$(this).text("Dark");
 						$("#tcs_turn_lang").attr("href","zh_CN/main.html?theme=dark&page=tcs_main");
 						$("#tcs_turn_home").attr("href","index.html?theme=dark&page=tcs_main");
+						FindCSSFunction($("#tcs_content").attr("page"))("dark");
 					}
 					else
 					{
@@ -31,11 +32,16 @@
 						$(this).text("Light");
 						$("#tcs_turn_lang").attr("href","zh_CN/main.html?theme=light&page=tcs_main");
 						$("#tcs_turn_home").attr("href","index.html?theme=light&page=tcs_main");
+						FindCSSFunction($("#tcs_content").attr("page"))("light");
 					}
 				});
 				
 				var themeType=GetQueryString("theme");
-				if(themeType == null || themeType == "light")
+				if(themeType == null)
+				{
+					themeType="light";
+				}
+				if(themeType == "light")
 				{	
 					TurnLightTheme();
 					$("#tcs_turn_theme").text("Light");
@@ -53,13 +59,9 @@
 				var pageName=GetQueryString("page");
 				if(pageName == null||pageName == undefined)
 				{
-					LoadPage("#tcs_content","tcs_main");
+					pageName="tcs_main";
 				}
-				else
-				{
-					LoadPage("#tcs_content",pageName);
-				}
-				
+				LoadPage("#tcs_content",pageName,FindCSSFunction(pageName),themeType);
 			});
 		</script>
 		<title>Home</title>
@@ -74,9 +76,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="#" class="navbar-brand" id="tcs_turn_theme">Light</a>
-					<a href="" class="navbar-brand" id="tcs_turn_lang">English</a>
-				</div>
+					<a href="#" class="navbar-brand" id="tcs_turn_theme">Light</a> <a class="navbar-brand" id="tcs_turn_lang">English</a></div>
 				<div class="collapse navbar-collapse navbar-right" id="tcs_bar">
 					<ul class="nav navbar-nav">
 						<li class="tcs_active">
