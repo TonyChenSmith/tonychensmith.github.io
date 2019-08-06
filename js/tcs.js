@@ -61,9 +61,13 @@ function TCSMainTheme(themeType)
 	if(themeType == "light")
 	{
 		$("#tcs_main_gen").css("cssText","color:#000000");
+		$("#tcs_main_hr_1").css("background-color","#1D1D1D");
+		$("#tcs_main_inscription").css({"color":"#5F5F5F","background-color":"#CACACA","border-color":"#C2C2C2"});
 	}
 	else
 	{
 		$("#tcs_main_gen").css("cssText","color:#FFFFFF");
+		$("#tcs_main_hr_1").css("background-color","#CCCCCC");
+		$("#tcs_main_inscription").css({"color":"#D4D4D4","background-color":"#858585","border-color":"#7C7C7C"});
 	}
 }

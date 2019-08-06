@@ -2,7 +2,8 @@
 <html>
 	<head>
 		<meta charset="utf-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<meta name="keywords" content="Tony Chen Smith,TonyChenSmith"/>
 		<meta name="description" content="Tony Chen Smith Personal Website"/>
 		<meta name="author" content="Tony Chen Smith"/>
@@ -24,6 +25,7 @@
 						$(this).text("暗色");
 						$('#turn_lang').attr("href","../index.html?theme=dark");
 						$('#turn_home').attr("href","main.html?theme=dark");
+						FindCSSFunction($("#tcs_content").attr("page"))("dark");
 					}
 					else
 					{
@@ -31,11 +33,16 @@
 						$(this).text("亮色");
 						$('#turn_lang').attr("href","../index.html?theme=light");
 						$('#turn_home').attr("href","main.html?theme=light");
+						FindCSSFunction($("#tcs_content").attr("page"))("light");
 					}
 				});
 				
 				var themeType=GetQueryString("theme");
-				if(themeType == null || themeType == "light")
+				if(themeType == null)
+				{
+					themeType="light";
+				}
+				if(themeType == "light")
 				{	
 					TurnLightTheme();
 					$('#turn_theme').text("亮色");
@@ -49,6 +56,13 @@
 					$('#turn_lang').attr("href","../index.html?theme=dark");
 					$('#turn_home').attr("href","main.html?theme=dark");
 				}
+				
+				var pageName=GetQueryString("page");
+				if(pageName == null||pageName == undefined)
+				{
+					pageName="tcs_main";
+				}
+				LoadPage("#tcs_content",pageName,FindCSSFunction(pageName),themeType);
 			});
 		</script>
 		<title>主页</title>
@@ -63,9 +77,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="#" class="navbar-brand" id="turn_theme">暗色</a>
-					<a href="../index.html" class="navbar-brand" id="turn_lang">中文</a>
-				</div>
+					<a href="#" class="navbar-brand" id="turn_theme">亮色</a> <a href="../index.html" class="navbar-brand" id="turn_lang">中文</a></div>
 				<div class="collapse navbar-collapse navbar-right" id="tcs_bar">
 					<ul class="nav navbar-nav">
 						<li>
@@ -76,7 +88,7 @@
 			</div>
 		</header>
 		
-		<div>
+		<div id="tcs_content">
 		</div>
 	</body>
 </html>
