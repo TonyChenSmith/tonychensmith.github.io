@@ -18,23 +18,26 @@
 		<script src="../js/tcs.js"></script>
 		<script>
 			$(function() {
-				$("#turn_theme").click(function(){
+				$("#tcs_turn_theme").click(function(){
 					if($(this).text()=="亮色")
 					{
 						TurnDarkTheme();
 						$(this).text("暗色");
-						$('#turn_lang').attr("href","../index.html?theme=dark");
-						$('#turn_home').attr("href","main.html?theme=dark");
+						$("#tcs_turn_lang").attr("href","../index.html?theme=dark&page=".concat($("#tcs_content").attr("page")));
+						$("#tcs_turn_home").attr("href","main.html?theme=dark&page=tcs_main");
+						$("#tcs_turn_about").attr("href","main.html?theme=dark&page=tcs_about");
 						FindCSSFunction($("#tcs_content").attr("page"))("dark");
 					}
 					else
 					{
 						TurnLightTheme();
 						$(this).text("亮色");
-						$('#turn_lang').attr("href","../index.html?theme=light");
-						$('#turn_home').attr("href","main.html?theme=light");
+						$("#tcs_turn_lang").attr("href","../index.html?theme=light&page=".concat($("#tcs_content").attr("page")));
+						$("#tcs_turn_home").attr("href","main.html?theme=light&page=tcs_main");
+						$("#tcs_turn_about").attr("href","main.html?theme=light&page=tcs_about");
 						FindCSSFunction($("#tcs_content").attr("page"))("light");
 					}
+					return false;
 				});
 				
 				var themeType=GetQueryString("theme");
@@ -45,16 +48,18 @@
 				if(themeType == "light")
 				{	
 					TurnLightTheme();
-					$('#turn_theme').text("亮色");
-					$('#turn_lang').attr("href","../index.html?theme=light");
-					$('#turn_home').attr("href","main.html?theme=light");
+					$("#tcs_turn_theme").text("亮色");
+					$("#tcs_turn_lang").attr("prehref","../index.html?theme=light&page=");
+					$("#tcs_turn_home").attr("href","main.html?theme=light&page=tcs_main");
+					$("#tcs_turn_about").attr("href","main.html?theme=light&page=tcs_about");
 				}
 				else
 				{
 					TurnDarkTheme();
-					$('#turn_theme').text("暗色");
-					$('#turn_lang').attr("href","../index.html?theme=dark");
-					$('#turn_home').attr("href","main.html?theme=dark");
+					$("#tcs_turn_theme").text("暗色");
+					$("#tcs_turn_lang").attr("prehref","../index.html?theme=dark&page=");
+					$("#tcs_turn_home").attr("href","main.html?theme=dark&page=tcs_main");
+					$("#tcs_turn_about").attr("href","main.html?theme=dark&page=tcs_about");
 				}
 				
 				var pageName=GetQueryString("page");
@@ -62,13 +67,15 @@
 				{
 					pageName="tcs_main";
 				}
+				$("#tcs_turn_lang").attr("href",$("#tcs_turn_lang").attr("prehref").concat(pageName));
 				LoadPage("#tcs_content",pageName,FindCSSFunction(pageName),themeType);
+				$("title").html(GetTitle(pageName,"zh_CN"));
 			});
 		</script>
 		<title>主页</title>
 	</head>
 	<body>
-		<header class="navbar navbar-default nav-fixed-top" role="navigation" id="index_header">
+		<header class="navbar navbar-default nav-fixed-top" role="navigation" id="tcs_index_header">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tcs_bar">
@@ -77,11 +84,16 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="#" class="navbar-brand" id="turn_theme">亮色</a> <a href="../index.html" class="navbar-brand" id="turn_lang">中文</a></div>
+					<a class="navbar-brand" id="tcs_turn_theme">亮色</a>
+					<a class="navbar-brand" id="tcs_turn_lang">中文</a>
+				</div>
 				<div class="collapse navbar-collapse navbar-right" id="tcs_bar">
 					<ul class="nav navbar-nav">
+						<li class="tcs_active">
+							<a id="tcs_turn_home">主页</a>
+						</li>
 						<li>
-							<a href="main.html" id="turn_home">主页</a>
+							<a id="tcs_turn_about">关于</a>
 						</li>
 					</ul>
 				</div>
