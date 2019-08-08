@@ -18,83 +18,63 @@
 		<script src="js/tcs.js"></script>
 		<script>
 			$(function() {
-				$("#tcs_turn_theme").click(function(){
-					if($(this).text()=="Light")
-					{
-						history.pushState(null,null,"index.html?page=tcs_about");
-						TurnDarkTheme();
-						$(this).text("Dark");
-						$("#tcs_turn_lang").attr("href","zh_CN/main.html?theme=dark&page=".concat($("#tcs_content").attr("page")));
-						$("#tcs_turn_home").attr("href","index.html?theme=dark&page=tcs_main");
-						$("#tcs_turn_about").attr("href","index.html?theme=dark&page=tcs_about");
-						FindCSSFunction($("#tcs_content").attr("page"))("dark");
-					}
-					else
-					{
-						TurnLightTheme();
-						$(this).text("Light");
-						$("#tcs_turn_lang").attr("href","zh_CN/main.html?theme=light&page=".concat($("#tcs_content").attr("page")));
-						$("#tcs_turn_home").attr("href","index.html?theme=light&page=tcs_main");
-						$("#tcs_turn_about").attr("href","index.html?theme=light&page=tcs_about");
-						FindCSSFunction($("#tcs_content").attr("page"))("light");
-					}
-					return false;
-				});
-				
-				var themeType=GetQueryString("theme");
-				if(themeType == null)
+				var temp=GetQueryString("lang");
+				if(temp == null)
 				{
-					themeType="light";
-				}
-				if(themeType == "light")
-				{	
-					TurnLightTheme();
-					$("#tcs_turn_theme").text("Light");
-					$("#tcs_turn_lang").attr("prehref","zh_CN/main.html?theme=light&page=");
-					$("#tcs_turn_home").attr("href","index.html?theme=light&page=tcs_main");
-					$("#tcs_turn_about").attr("href","index.html?theme=light&page=tcs_about");
+					tcs_active["lang"]="en_US";
 				}
 				else
 				{
-					TurnDarkTheme();
-					$("#tcs_turn_theme").text("Dark");
-					$("#tcs_turn_lang").attr("prehref","zh_CN/main.html?theme=dark&page=");
-					$("#tcs_turn_home").attr("href","index.html?theme=dark&page=tcs_main");
-					$("#tcs_turn_about").attr("href","index.html?theme=dark&page=tcs_about");
+					tcs_active["lang"]=temp;
 				}
 				
-				var pageName=GetQueryString("page");
-				if(pageName == null||pageName == undefined)
+				temp=GetQueryString("theme");
+				if(temp == null)
 				{
-					pageName="tcs_main";
+					tcs_active["themeType"]="light";
 				}
-				$("#tcs_turn_lang").attr("href",$("#tcs_turn_lang").attr("prehref").concat(pageName));
-				LoadPage("#tcs_content",pageName,FindCSSFunction(pageName),themeType);
-				$("title").text(GetTitle(pageName,"en_US"));
+				else
+				{
+					tcs_active["themeType"]=temp;
+				}
+				
+				temp=GetQueryString("page");
+				if(temp == null)
+				{
+					tcs_active["page"]="tcs_main";
+				}
+				else
+				{
+					tcs_active["page"]=temp;
+				}
+				
+				ParseParams();
+				ChangeHistory();
+				Init();
 			});
 		</script>
-		<title>Home</title>
+		<title></title>
 	</head>
 	<body>
 		<header class="navbar navbar-default nav-fixed-top" role="navigation" id="tcs_index_header">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tcs_bar">
-						<span class="sr-only">Switch page</span>
+						<span class="sr-only" id="tcs_point"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" id="tcs_turn_theme">Light</a>
-					<a class="navbar-brand" id="tcs_turn_lang">English</a>
+					<a class="navbar-brand" id="tcs_turn_theme"></a>
+					<a class="navbar-brand" id="tcs_turn_lang"></a>
 				</div>
 				<div class="collapse navbar-collapse navbar-right" id="tcs_bar">
 					<ul class="nav navbar-nav">
 						<li class="tcs_active">
-							<a id="tcs_turn_home">Home</a>
+							<a id="tcs_turn_home"></a>
 						</li>
 						<li>
-							<a id="tcs_turn_about">About</a>
+							<a id="tcs_turn_about"></a>
 						</li>
 					</ul>
 				</div>
