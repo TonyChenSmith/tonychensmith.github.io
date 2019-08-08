@@ -18,10 +18,10 @@
 		<script src="js/tcs.js"></script>
 		<script>
 			$(function() {
-				history.pushState({page:"tcs_about"},null,"index.html");
 				$("#tcs_turn_theme").click(function(){
 					if($(this).text()=="Light")
 					{
+						history.pushState(null,null,"index.html?page=tcs_about");
 						TurnDarkTheme();
 						$(this).text("Dark");
 						$("#tcs_turn_lang").attr("href","zh_CN/main.html?theme=dark&page=".concat($("#tcs_content").attr("page")));
