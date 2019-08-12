@@ -2,8 +2,8 @@
 var zh_CN_title={"tcs_main":"主页","tcs_about":"关于","tcs_404":"404"};
 var gen_title={"tcs_main":"Home","tcs_about":"About","tcs_404":"404"};
 
-var zh_CN_nav={"tcs_point":"选择页面","tcs_turn_lang":"中文","tcs_turn_home":"主页","tcs_turn_about":"关于"};
-var gen_nav={"tcs_point":"Switch page","tcs_turn_lang":"English","tcs_turn_home":"Home","tcs_turn_about":"About"};
+var zh_CN_nav={"tcs_point":"选择页面","tcs_turn_lang":"中文","tcs_turn_home":"主页","tcs_turn_about":"关于","tcs_copyright":"Tony Chen Smith © 2019 版权所有。"};
+var gen_nav={"tcs_point":"Switch page","tcs_turn_lang":"English","tcs_turn_home":"Home","tcs_turn_about":"About","tcs_copyright":"Copyright © 2019 Tony Chen Smith. All rights reserved."};
 
 var zh_CN_page={"tcs_main":"zh_CN/tcs_main.html","tcs_about":"zh_CN/tcs_about.html","tcs_404":"zh_CN/tcs_404.html"};
 var gen_page={"tcs_main":"tcs_main.html","tcs_about":"tcs_about.html","tcs_404":"tcs_404.html"};
@@ -193,6 +193,7 @@ function TurnChinese()
 	$("#tcs_turn_lang").text(zh_CN_nav["tcs_turn_lang"]);
 	$("#tcs_turn_home").text(zh_CN_nav["tcs_turn_home"]);
 	$("#tcs_turn_about").text(zh_CN_nav["tcs_turn_about"]);
+	$("#tcs_copyright").text(zh_CN_nav["tcs_copyright"]);
 }
 
 //转英语
@@ -203,6 +204,7 @@ function TurnEnglish()
 	$("#tcs_turn_lang").text(gen_nav["tcs_turn_lang"]);
 	$("#tcs_turn_home").text(gen_nav["tcs_turn_home"]);
 	$("#tcs_turn_about").text(gen_nav["tcs_turn_about"]);
+	$("#tcs_copyright").text(gen_nav["tcs_copyright"]);
 }
 
 //提交历史记录
@@ -282,12 +284,12 @@ function TCSAboutTheme(themeType)
 	if(themeType == "light")
 	{
 		$("#tcs_about_gen").css("cssText","color:#000000");
-		$("#tcs_about_hr_1").css("background-color","#1D1D1D");
+		$(".tcs_about_hr").css("background-color","#1D1D1D");
 	}
 	else
 	{
 		$("#tcs_about_gen").css("cssText","color:#FFFFFF");
-		$("#tcs_about_hr_1").css("background-color","#CCCCCC");
+		$(".tcs_about_hr").css("background-color","#CCCCCC");
 	}
 }
 
