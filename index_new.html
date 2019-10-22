@@ -17,6 +17,30 @@
 		<![endif]-->
 		<link rel="stylesheet" href="css/tcs_new.css" type="text/css"/>
 		<script src="js/tcs_new.js"></script>
+		<script>
+			$(function(){
+				var temp=TCSGetQueryString("lang");
+				if(temp == null)
+				{
+					tcs_active["lang"]="en_US";
+				}
+				else
+				{
+					tcs_active["lang"]=temp;
+				}
+				
+				temp=TCSGetQueryString("theme");
+				if(temp == null)
+				{
+					tcs_active["themeType"]="light";
+				}
+				else
+				{
+					tcs_active["themeType"]=temp;
+				}
+				TCSHeaderDarkTheme(null);
+			});
+		</script>
 		<title></title>
 	</head>
 	<body>
