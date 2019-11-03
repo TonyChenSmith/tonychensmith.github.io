@@ -12,6 +12,16 @@ function TCSGetQueryString(name)
 	if(r!=null)return unescape(r[2]); return null;
 }
 
+//转全局中文
+function TCSHeaderTurnChinese()
+{
+	$("*").css("cssText","font-family:'微软雅黑', '黑体', 'sans-serif';font-size:100%");
+	$("#tcs_point").text(zh_CN_Header["tcs_point"]);
+	$("#tcs_lang").text(zh_CN_Header["tcs_lang"]);
+	$("#tcs_guide_home").text(zh_CN_Header["tcs_guide_home"]);
+	$("#tcs_guide_about").text(zh_CN_Header["tcs_guide_about"]);
+}
+
 //亮色主题
 function TCSHeaderLightTheme(lang)
 {
