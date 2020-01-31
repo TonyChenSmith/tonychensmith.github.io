@@ -1,4 +1,4 @@
-//全局变量 point有提示意味
+//全局变量 point有提示意味 https://www.worldtimebuddy.com/ 时区网站
 var zh_CN_title={"tcs_main":"主页","tcs_about":"关于","tcs_404":"404"};
 var gen_title={"tcs_main":"Home","tcs_about":"About","tcs_404":"404"};
 
