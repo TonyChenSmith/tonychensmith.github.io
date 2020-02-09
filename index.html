@@ -14,84 +14,8 @@
 			<script src="js/respond.js"></script>
 			<script src="js/html5shiv.min.js"></script>
 		<![endif]-->
-		<link rel="stylesheet" href="css/tcs.css" type="text/css"/>
-		<script src="js/tcs.js"></script>
-		<script>
-			$(function() {
-				var temp=GetQueryString("lang");
-				if(temp == null)
-				{
-					tcs_active["lang"]="en_US";
-				}
-				else
-				{
-					tcs_active["lang"]=temp;
-				}
-				
-				temp=GetQueryString("theme");
-				if(temp == null)
-				{
-					tcs_active["themeType"]="light";
-				}
-				else
-				{
-					tcs_active["themeType"]=temp;
-				}
-				
-				temp=GetQueryString("page");
-				if(temp == null)
-				{
-					tcs_active["page"]="tcs_main";
-				}
-				else
-				{
-					tcs_active["page"]=temp;
-				}
-				
-				ParseParams();
-				ChangeHistory();
-				Init();
-			});
-		</script>
-		<style>
-			#tcs_copyright
-			{
-				text-align: center;
-				font-size: 0.25em
-			}
-		</style>
 		<title></title>
 	</head>
 	<body>
-		<header class="navbar navbar-default nav-fixed-top" role="navigation" id="tcs_index_header">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tcs_bar">
-						<span class="sr-only" id="tcs_point"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" id="tcs_turn_theme"></a>
-					<a class="navbar-brand" id="tcs_turn_lang"></a>
-				</div>
-				<div class="collapse navbar-collapse navbar-right" id="tcs_bar">
-					<ul class="nav navbar-nav">
-						<li class="tcs_active">
-							<a id="tcs_turn_home"></a>
-						</li>
-						<li>
-							<a id="tcs_turn_about"></a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</header>
-		
-		<div id="tcs_content">
-		</div>
-		
-		<div id="tcs_copyright">
-		</div>
 	</body>
 </html>
