@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<entry type="method" name="andSelf" return="jQuery" deprecated="1.8" removed="3.0">
+  <title>.andSelf()</title>
+  <signature>
+    <added>1.2</added>
+  </signature>
+  <desc>Add the previous set of elements on the stack to the current set.</desc>
+  <longdesc>
+    <div class="warning">
+      <p>Note: This API has been removed in jQuery 3.0; use <a href="/addBack/"><code>.addBack()</code></a> instead, which should work identically.</p>
+    </div>
+  </longdesc>
+  <category slug="traversing/miscellaneous-traversal"/>
+  <category slug="version/1.2"/>
+  <category slug="deprecated/deprecated-1.8"/>
+  <category slug="removed"/>
+</entry>

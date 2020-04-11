@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<entry type="method" name="jQuery.globalEval" return="Anything">
+  <title>jQuery.globalEval()</title>
+  <signature>
+    <added>1.0.4</added>
+    <argument name="code" type="String">
+      <desc>The JavaScript code to execute.</desc>
+    </argument>
+  </signature>
+  <signature>
+    <added>3.4.0</added>
+    <argument name="code" type="String">
+      <desc>The JavaScript code to execute.</desc>
+    </argument>
+    <argument name="options" type="PlainObject" optional="true">
+      <property name="nonce" type="string">
+        <desc>The nonce attribute passed to the executed script.</desc>
+      </property>
+    </argument>
+  </signature>
+  <desc>Execute some JavaScript code globally.</desc>
+  <longdesc>
+    <p>This method behaves differently from using a normal JavaScript <code>eval()</code> in that it's executed within the global context (which is important for loading external scripts dynamically).</p>
+  </longdesc>
+  <example>
+    <desc>Execute a script in the global context.</desc>
+    <code><![CDATA[
+function test() {
+  jQuery.globalEval( "var newVar = true;" );
+}
+test();
+// newVar === true
+]]></code>
+  </example>
+  <example>
+    <desc>Execute a script with a nonce value on a site with Content Security Policy enabled.</desc>
+    <code><![CDATA[
+function test() {
+  jQuery.globalEval( "var newVar = true;", {
+    nonce: "nonce-2726c7f26c"
+  } );
+}
+test();
+// newVar === true
+]]></code>
+  </example>
+  <category slug="utilities"/>
+  <category slug="version/1.0.4"/>
+</entry>
