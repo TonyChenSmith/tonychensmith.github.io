@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"aos.library.regex","l":"Matcher"},{"p":"aos.library.regex","l":"Pattern"}];updateSearchResults();
